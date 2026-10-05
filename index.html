@@ -281,6 +281,32 @@
   }
   #lightbox .lb-close:hover{opacity:1;}
 
+  /* reviews marquee */
+  #reviews{overflow:hidden;}
+  .marquee-track{
+    display:flex;
+    gap:22px;
+    width:max-content;
+    animation:marquee-scroll 32s linear infinite;
+  }
+  .marquee-track:hover{animation-play-state:paused;}
+  @keyframes marquee-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .review-card{
+    flex:0 0 auto;
+    width:260px;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 8px 24px rgba(92,68,51,0.12);
+    border:1px solid rgba(92,68,51,0.08);
+  }
+  .review-card img{
+    width:100%;
+    display:block;
+  }
+
   /* custom + about */
   .split{
     display:grid;
@@ -325,6 +351,7 @@
       <a href="#about">About</a>
       <a href="#dingify">What Can I Dingify?</a>
       <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
       <a href="#custom">Custom</a>
       <a href="#contact">Contact</a>
     </div>
@@ -394,6 +421,16 @@
   <img id="lightboxImg" src="" alt="">
   <div class="lb-cap" id="lightboxCap"></div>
 </div>
+
+<section id="reviews" style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Reviews</div>
+      <h2>What people are saying</h2>
+    </div>
+  </div>
+  <div class="marquee-track" id="marqueeTrack"></div>
+</section>
 
 <section id="custom" style="background:var(--cream-deep);">
   <div class="wrap">
@@ -465,7 +502,13 @@
       cover: 'gallery/leopard-bouquet-1-thumb.jpg',
       photos: [
         { thumb: 'gallery/leopard-bouquet-1-thumb.jpg', full: 'gallery/leopard-bouquet-1-full.jpg', cap: 'Leopard print bouquet' },
-        { thumb: 'gallery/leopard-bouquet-2-thumb.jpg', full: 'gallery/leopard-bouquet-2-full.jpg', cap: 'Leopard print bouquet — detail' }
+        { thumb: 'gallery/leopard-bouquet-2-thumb.jpg', full: 'gallery/leopard-bouquet-2-full.jpg', cap: 'Leopard print bouquet — detail' },
+        { thumb: 'gallery/blue-ombre-bouquet-1-thumb.jpg', full: 'gallery/blue-ombre-bouquet-1-full.jpg', cap: 'Blue ombré rose bouquet' },
+        { thumb: 'gallery/blue-ombre-bouquet-2-thumb.jpg', full: 'gallery/blue-ombre-bouquet-2-full.jpg', cap: 'Blue ombré rose bouquet — detail' },
+        { thumb: 'gallery/rose-pink-single-thumb.jpg', full: 'gallery/rose-pink-single-full.jpg', cap: 'Single pink rose' },
+        { thumb: 'gallery/rose-blue-pair-thumb.jpg', full: 'gallery/rose-blue-pair-full.jpg', cap: 'Single blue roses' },
+        { thumb: 'gallery/rose-purple-pair-thumb.jpg', full: 'gallery/rose-purple-pair-full.jpg', cap: 'Single purple roses' },
+        { thumb: 'gallery/rose-trio-thumb.jpg', full: 'gallery/rose-trio-full.jpg', cap: 'Pink, purple & blue rose trio' }
       ]
     },
     {
@@ -508,6 +551,7 @@
       photos: [
         { thumb: 'gallery/lana-dolls-1-thumb.jpg', full: 'gallery/lana-dolls-1-full.jpg', cap: 'Lust for Life–inspired dolls' },
         { thumb: 'gallery/lana-dolls-2-thumb.jpg', full: 'gallery/lana-dolls-2-full.jpg', cap: 'Lust for Life–inspired dolls — detail' },
+        { thumb: 'gallery/lana-dolls-3-thumb.jpg', full: 'gallery/lana-dolls-3-full.jpg', cap: 'Lust for Life–inspired doll — red dress' },
         { thumb: 'gallery/barbie-bag-1-thumb.jpg', full: 'gallery/barbie-bag-1-full.jpg', cap: 'Barbie-inspired bag' },
         { thumb: 'gallery/barbie-bag-2-thumb.jpg', full: 'gallery/barbie-bag-2-full.jpg', cap: 'Barbie-inspired bag — detail' }
       ]
@@ -566,6 +610,25 @@
     if (e) e.stopPropagation();
     document.getElementById('lightbox').classList.remove('open');
   }
+
+  // ---- Reviews marquee ----
+  const reviewImages = [
+    'gallery/review-1.jpg',
+    'gallery/review-2.jpg',
+    'gallery/review-3.jpg',
+    'gallery/review-4.jpg',
+    'gallery/review-5.jpg',
+    'gallery/review-6.jpg'
+  ];
+  const marqueeTrack = document.getElementById('marqueeTrack');
+  // duplicate the list so the loop is seamless
+  const doubledReviews = reviewImages.concat(reviewImages);
+  doubledReviews.forEach(src => {
+    const card = document.createElement('div');
+    card.className = 'review-card';
+    card.innerHTML = `<img src="${src}" alt="Customer review">`;
+    marqueeTrack.appendChild(card);
+  });
 
 </script>
 
