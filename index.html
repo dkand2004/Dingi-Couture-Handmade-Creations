@@ -287,7 +287,7 @@
     display:flex;
     gap:22px;
     width:max-content;
-    animation:marquee-scroll 43s linear infinite;
+    animation:marquee-scroll 53s linear infinite;
   }
   .marquee-track:hover{animation-play-state:paused;}
   @keyframes marquee-scroll{
@@ -511,7 +511,9 @@
         { thumb: 'gallery/rose-trio-thumb.jpg', full: 'gallery/rose-trio-full.jpg', cap: 'Pink, purple & blue rose trio' },
         { thumb: 'gallery/bouquet-pink-1-thumb.jpg', full: 'gallery/bouquet-pink-1-full.jpg', cap: 'Pink & red mixed bouquet' },
         { thumb: 'gallery/bouquet-pink-2-thumb.jpg', full: 'gallery/bouquet-pink-2-full.jpg', cap: 'Pink & red mixed bouquet — detail' },
-        { thumb: 'gallery/bouquet-pink-3-thumb.jpg', full: 'gallery/bouquet-pink-3-full.jpg', cap: 'Pink & red mixed bouquet — in hand' }
+        { thumb: 'gallery/bouquet-pink-3-thumb.jpg', full: 'gallery/bouquet-pink-3-full.jpg', cap: 'Pink & red mixed bouquet — in hand' },
+        { thumb: 'gallery/hibiscus-1-thumb.jpg', full: 'gallery/hibiscus-1-full.jpg', cap: 'Single stem hibiscus' },
+        { thumb: 'gallery/hibiscus-2-thumb.jpg', full: 'gallery/hibiscus-2-full.jpg', cap: 'Single stem hibiscus — gift wrapped', pos: 'center top' }
       ]
     },
     {
@@ -521,7 +523,8 @@
       photos: [
         { thumb: 'gallery/ppg-tulip-bouquet-thumb.jpg', full: 'gallery/ppg-tulip-bouquet-full.jpg', cap: 'Powerpuff Girls–inspired tulip bouquet' },
         { thumb: 'gallery/spiderman-bouquet-thumb.jpg', full: 'gallery/spiderman-bouquet-full.jpg', cap: 'Spider-Man–inspired bouquet' },
-        { thumb: 'gallery/hellokitty-bouquet-thumb.jpg', full: 'gallery/hellokitty-bouquet-full.jpg', cap: 'Hello Kitty–inspired bouquet' }
+        { thumb: 'gallery/hellokitty-bouquet-thumb.jpg', full: 'gallery/hellokitty-bouquet-full.jpg', cap: 'Hello Kitty–inspired bouquet' },
+        { thumb: 'gallery/mha-flowers-thumb.jpg', full: 'gallery/mha-flowers-full.jpg', cap: 'My Hero Academia–inspired flowers' }
       ]
     },
     {
@@ -537,7 +540,16 @@
         { thumb: 'gallery/keychain-belle-thumb.jpg', full: 'gallery/keychain-belle-full.jpg', cap: 'Belle-inspired keychain' },
         { thumb: 'gallery/keychain-ariel-thumb.jpg', full: 'gallery/keychain-ariel-full.jpg', cap: 'Ariel-inspired keychain' },
         { thumb: 'gallery/flower-ring-tumbler-thumb.jpg', full: 'gallery/flower-ring-tumbler-full.jpg', cap: 'Pipe cleaner flower ring — tumbler' },
-        { thumb: 'gallery/flower-ring-mug-thumb.jpg', full: 'gallery/flower-ring-mug-full.jpg', cap: 'Pipe cleaner flower ring — mug' }
+        { thumb: 'gallery/flower-ring-mug-thumb.jpg', full: 'gallery/flower-ring-mug-full.jpg', cap: 'Pipe cleaner flower ring — mug' },
+        { thumb: 'gallery/clip-violet-thumb.jpg', full: 'gallery/clip-violet-full.jpg', cap: 'Flower hair clip — violet' },
+        { thumb: 'gallery/clip-orchid-thumb.jpg', full: 'gallery/clip-orchid-full.jpg', cap: 'Flower hair clip — orchid' },
+        { thumb: 'gallery/clip-lavender-thumb.jpg', full: 'gallery/clip-lavender-full.jpg', cap: 'Flower hair clip — lavender' },
+        { thumb: 'gallery/clip-hotpink-thumb.jpg', full: 'gallery/clip-hotpink-full.jpg', cap: 'Flower hair clip — hot pink' },
+        { thumb: 'gallery/clip-blush-thumb.jpg', full: 'gallery/clip-blush-full.jpg', cap: 'Flower hair clip — blush' },
+        { thumb: 'gallery/clip-rosepink-thumb.jpg', full: 'gallery/clip-rosepink-full.jpg', cap: 'Flower hair clip — rose pink' },
+        { thumb: 'gallery/clip-burgundy-thumb.jpg', full: 'gallery/clip-burgundy-full.jpg', cap: 'Flower hair clip — burgundy' },
+        { thumb: 'gallery/clip-red-thumb.jpg', full: 'gallery/clip-red-full.jpg', cap: 'Flower hair clip — red' },
+        { thumb: 'gallery/clip-wine-thumb.jpg', full: 'gallery/clip-wine-full.jpg', cap: 'Flower hair clip — wine' }
       ]
     },
     {
@@ -604,7 +616,7 @@
       thumb.className = 'gallery-thumb';
       thumb.onclick = () => openLightbox(p.full, p.cap);
       thumb.innerHTML = `
-        <img src="${p.thumb}" alt="${p.cap}">
+        <img src="${p.thumb}" alt="${p.cap}"${p.pos ? ` style="object-position:${p.pos}"` : ''}>
         <div class="zoom-hint">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           Tap to enlarge
@@ -641,7 +653,9 @@
     'gallery/review-5.jpg',
     'gallery/review-6.jpg',
     'gallery/review-7.jpg',
-    'gallery/review-8.jpg'
+    'gallery/review-8.jpg',
+    'gallery/review-9.jpg',
+    'gallery/review-10.jpg'
   ];
   const marqueeTrack = document.getElementById('marqueeTrack');
   // duplicate the list so the loop is seamless
